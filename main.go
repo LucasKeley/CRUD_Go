@@ -14,7 +14,5 @@ func main() {
 		log.Fatal("Error loading .env file")
 	}
 
-	fmt.Println(os.Getenv("TESTE"))
-
-	// now do something with s3 or whatever
+	fmt.Println(os.Getenv("TEST"))
 }
