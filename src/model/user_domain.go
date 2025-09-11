@@ -14,10 +14,6 @@ type UserDomainInterface interface {
 	EncryptPassword()
 }
 
-func (u UserDomainInterface) CreateUser() any {
-	panic("unimplemented")
-}
-
 func NewUserDomain(
 	email, password, name string,
 	age int,
