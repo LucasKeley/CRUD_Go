@@ -10,6 +10,7 @@ import (
 	"github.com/LucasKeley/CRUD_Go/src/model"
 	"github.com/LucasKeley/CRUD_Go/src/model/repository/entity"
 	"github.com/LucasKeley/CRUD_Go/src/model/repository/entity/converter"
+	"go.mongodb.org/mongo-driver/bson/primitive"
 	"go.mongodb.org/mongo-driver/v2/bson"
 	"go.mongodb.org/mongo-driver/v2/mongo"
 	"go.uber.org/zap"
@@ -22,7 +23,6 @@ func (ur *userRepository) FindUserByEmail(email string) (model.UserDomainInterfa
 	collection := ur.databaseConnection.Collection(collection_name)
 
 	UserEntity := &entity.UserEntity{}
-
 	filter := bson.D{{Key: "email", Value: email}}
 	err := collection.FindOne(context.Background(), filter).Decode(UserEntity)
 
@@ -55,7 +55,8 @@ func (ur *userRepository) FindUserByID(id string) (model.UserDomainInterface, *r
 
 	UserEntity := &entity.UserEntity{}
 
-	filter := bson.D{{Key: "_id", Value: id}}
+	ObjectID, _ := primitive.ObjectIDFromHex(id)
+	filter := bson.D{{Key: "_id", Value: ObjectID}}
 	err := collection.FindOne(context.Background(), filter).Decode(UserEntity)
 
 	if err != nil {

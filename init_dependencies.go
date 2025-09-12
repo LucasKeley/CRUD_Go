@@ -8,7 +8,6 @@ import (
 )
 
 func initDependecies(database *mongo.Database) controller.UserControllerInterface {
-	//Init dependencies
 	repo := repository.NewUserRepository(database)
 	service := service.NewUserDomainService(repo)
 	return controller.NewUserControllerInterface(service)
