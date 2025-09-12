@@ -9,14 +9,12 @@ import (
 	"github.com/LucasKeley/CRUD_Go/src/model"
 	"github.com/LucasKeley/CRUD_Go/src/model/repository/entity/converter"
 	"go.mongodb.org/mongo-driver/v2/bson"
+	"go.uber.org/zap"
 )
 
-var MONGODB_USER_DB = "MONGODB_USER_DB"
-
 func (ur *userRepository) CreateUser(userDomain model.UserDomainInterface) (model.UserDomainInterface, *rest_err.RestErr) {
-	logger.Info("Init CreateUser repository")
+	logger.Info("Init CreateUser repository", zap.String("journey", "createUser"))
 	collection_name := os.Getenv(MONGODB_USER_DB)
-
 	collection := ur.databaseConnection.Collection(collection_name)
 
 	value := converter.ConvertDomainToEntity(userDomain)
