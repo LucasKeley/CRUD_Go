@@ -18,7 +18,7 @@ func NewMongoDBConnection(ctx context.Context) (*mongo.Database, error) {
 	mongodb_uri := os.Getenv(MONGODB_URL)
 	mongodb_database := os.Getenv(MONGODB_USER_DB)
 
-	client, err := mongo.Connect(options.Client().ApplyURI(os.Getenv(mongodb_uri)))
+	client, err := mongo.Connect(options.Client().ApplyURI(mongodb_uri))
 
 	if err != nil {
 		return nil, err

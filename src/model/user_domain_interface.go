@@ -5,7 +5,7 @@ type UserDomainInterface interface {
 	GetPassword() string
 	GetAge() int
 	GetName() string
-
+	GetID() string
 	SetID(string)
 
 	GetJSONValue() (string, error)

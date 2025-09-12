@@ -8,6 +8,7 @@ import (
 	"github.com/LucasKeley/CRUD_Go/src/configuration/rest_err"
 	"github.com/LucasKeley/CRUD_Go/src/model"
 	"github.com/LucasKeley/CRUD_Go/src/model/repository/entity/converter"
+	"go.mongodb.org/mongo-driver/v2/bson"
 )
 
 var MONGODB_USER_DB = "MONGODB_USER_DB"
@@ -25,7 +26,7 @@ func (ur *userRepository) CreateUser(userDomain model.UserDomainInterface) (mode
 		return nil, rest_err.NewInternalServerError(err.Error())
 	}
 
-	userDomain.SetID(result.InsertedID.(string))
+	value.ID = result.InsertedID.(bson.ObjectID)
 
-	return userDomain, nil
+	return converter.ConvertEntityToDomain(*value), nil
 }
