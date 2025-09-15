@@ -10,6 +10,12 @@ import (
 func (ud *userDomainService) CreateUserServeces(
 	userDomain model.UserDomainInterface,
 ) (model.UserDomainInterface, *rest_err.RestErr) {
+
+	user, _ := ud.FindUserByEmailServices(userDomain.GetEmail())
+	if user != nil {
+		return nil, rest_err.NewBadRequestError("Email is already registered in another account")
+	}
+
 	logger.Info("Init createUser model", zap.String("journey", "createUser"))
 	userDomain.EncryptPassword()
 

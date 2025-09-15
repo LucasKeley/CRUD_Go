@@ -6,8 +6,8 @@ import (
 
 type UserEntity struct {
 	ID       primitive.ObjectID `bson:"_id,omitempty"`
-	Email    string             `bson:"email"`
-	Password string             `bson:"password"`
-	Name     string             `bson:"name"`
-	Age      int                `bson:"age"`
+	Email    string             `bson:"email,omitempy"`
+	Password string             `bson:"password,omitempy"`
+	Name     string             `bson:"name,omitempy"`
+	Age      int                `bson:"age,omitempy"`
 }

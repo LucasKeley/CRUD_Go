@@ -12,14 +12,12 @@ import (
 	"go.uber.org/zap"
 )
 
-var (
-	UserDomainInterface model.UserDomainInterface
-)
+func (uc *userControllerInterface) LoginUser(c *gin.Context) {
+	logger.Info("Init loginUser controler",
+		zap.String("journey", "loginUser"))
 
-func (uc *userControllerInterface) CreateUser(c *gin.Context) {
-	logger.Info("Init CreateUser controler",
-		zap.String("journey", "CreateUser"))
-	var UserRequest request.UserRequest
+	var UserRequest request.UserLogin
+
 	if err := c.ShouldBindJSON(&UserRequest); err != nil {
 		logger.Error("Error Trying to validate user info", err,
 			zap.String("journey", "CreateUser"))
@@ -29,14 +27,12 @@ func (uc *userControllerInterface) CreateUser(c *gin.Context) {
 		return
 	}
 
-	domain := model.NewUserDomain(
+	domain := model.NewUserLoginDomain(
 		UserRequest.Email,
-		UserRequest.PassWord,
-		UserRequest.Name,
-		UserRequest.Age,
+		UserRequest.Password,
 	)
 
-	domainResult, err := uc.service.CreateUserServices(domain)
+	domainResult, err := uc.service.LoginUserServices(domain)
 	if err != nil {
 		logger.Info("Error trying to call CreateUser service", zap.String("journey", "createUser"))
 		c.JSON(err.Code, err)
