@@ -9,23 +9,28 @@ import (
 
 func (ud *userDomainService) LoginUserServices(
 	userDomain model.UserDomainInterface,
-) (model.UserDomainInterface, *rest_err.RestErr) {
+) (model.UserDomainInterface, string, *rest_err.RestErr) {
 
 	user, err := ud.FindUserByEmailAndPasswordServices(
 		userDomain.GetEmail(),
 		userDomain.GetPassword(),
 	)
 	if err != nil {
-		return nil, rest_err.NewBadRequestError("Email is already registered in another account")
+		return nil, "", err
 	}
 
 	logger.Info("Init loginUser model", zap.String("journey", "loginUser"))
 	userDomain.EncryptPassword()
+
+	token, err := user.GenerateToken()
+	if err != nil {
+		return nil, "", err
+	}
 
 	logger.Info(
 		"loginUser service executed successfully",
 		zap.String("userId", user.GetID()),
 		zap.String("journey", "loginUser"))
 
-	return user, nil
+	return user, token, nil
 }

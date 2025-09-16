@@ -66,3 +66,11 @@ func NewForbiddenError(message string) *RestErr {
 		Code:    http.StatusForbidden,
 	}
 }
+
+func NewUnauthorizedResquestError(message string) *RestErr {
+	return &RestErr{
+		Message: message,
+		Err:     "unauthorized",
+		Code:    http.StatusUnauthorized,
+	}
+}
