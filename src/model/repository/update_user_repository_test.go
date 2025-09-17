@@ -4,7 +4,7 @@ import (
 	"os"
 	"testing"
 
-	"github.com/HunCoding/meu-primeiro-crud-go/src/model"
+	"github.com/LucasKeley/CRUD_Go/src/model"
 	"github.com/stretchr/testify/assert"
 	"go.mongodb.org/mongo-driver/bson"
 	"go.mongodb.org/mongo-driver/bson/primitive"

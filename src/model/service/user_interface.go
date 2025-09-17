@@ -16,6 +16,10 @@ type userDomainService struct {
 	userRepository repository.UserRepository
 }
 
+func (ud *userDomainService) findUserByEmailAndPasswordServices(email string, password string) (any, any) {
+	panic("unimplemented")
+}
+
 func (ud *userDomainService) CreateUserServices(model.UserDomainInterface) (model.UserDomainInterface, *rest_err.RestErr) {
 	panic("unimplemented")
 }
