@@ -16,6 +16,10 @@ type MockUserDomainInterfaceMockRecorder struct {
 	mock *MockUserDomainInterface
 }
 
+func (mr *MockUserDomainInterfaceMockRecorder) DeleteUser(id string) {
+	panic("unimplemented")
+}
+
 func NewMockUserDomainInterface(ctrl *gomock.Controller) *MockUserDomainInterface {
 	mock := &MockUserDomainInterface{ctrl: ctrl}
 	mock.recorder = &MockUserDomainInterfaceMockRecorder{mock}
