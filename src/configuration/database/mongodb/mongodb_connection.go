@@ -13,6 +13,7 @@ var (
 	MONGODB_USER_DB = "MONGODB_USER_DB"
 )
 
+// NewMongoDBConnection cria um cliente MongoDB, valida a conexão e retorna a instância de banco configurada.
 func NewMongoDBConnection(ctx context.Context) (*mongo.Database, error) {
 
 	mongodb_uri := os.Getenv(MONGODB_URL)

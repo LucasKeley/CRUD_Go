@@ -16,6 +16,7 @@ import (
 	"go.uber.org/zap"
 )
 
+// FindUserByEmail busca um usuário pelo e-mail aplicando os filtros diretamente no MongoDB.
 func (ur *userRepository) FindUserByEmail(email string) (model.UserDomainInterface, *rest_err.RestErr) {
 	logger.Info("Init findUser repository", zap.String("journey", "findUserByEmail"))
 
@@ -47,6 +48,7 @@ func (ur *userRepository) FindUserByEmail(email string) (model.UserDomainInterfa
 
 }
 
+// FindUserByID converte o identificador em ObjectID e recupera o documento correspondente.
 func (ur *userRepository) FindUserByID(id string) (model.UserDomainInterface, *rest_err.RestErr) {
 	logger.Info("Init findUser repository", zap.String("journey", "findUserByID"))
 
@@ -84,6 +86,7 @@ func (ur *userRepository) FindUserByID(id string) (model.UserDomainInterface, *r
 
 }
 
+// FindUserByEmailAndPassword autentica usuários comparando e-mail e senha hash armazenados.
 func (ur *userRepository) FindUserByEmailAndPassword(email, password string) (model.UserDomainInterface, *rest_err.RestErr) {
 	logger.Info("Init findUser repository", zap.String("journey", "findUserByEmailAndPassword"))
 

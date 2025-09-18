@@ -13,6 +13,7 @@ import (
 	"go.uber.org/zap"
 )
 
+// UpdateUser valida a requisição de atualização, reforçando o formato do ID antes de acionar a camada de serviço.
 func (uc *userControllerInterface) UpdateUser(c *gin.Context) {
 	logger.Info("Init UpdateUser controler",
 		zap.String("journey", "UpdateUser"))

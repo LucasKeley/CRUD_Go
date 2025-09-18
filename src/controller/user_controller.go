@@ -5,12 +5,14 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
+// NewUserControllerInterface injeta a camada de serviço e entrega uma implementação pronta do controlador HTTP.
 func NewUserControllerInterface(
 	serviceInterface service.UserDomainService,
 ) UserControllerInterface {
 	return &userControllerInterface{service: serviceInterface}
 }
 
+// UserControllerInterface define os handlers expostos à camada de rotas do Gin.
 type UserControllerInterface interface {
 	FindUserByID(c *gin.Context)
 	FindUserByEmail(c *gin.Context)

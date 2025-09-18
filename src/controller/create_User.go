@@ -13,9 +13,11 @@ import (
 )
 
 var (
+	// UserDomainInterface mantém uma referência compartilhada usada em testes/mocks.
 	UserDomainInterface model.UserDomainInterface
 )
 
+// CreateUser processa a requisição de criação de usuário e valida a entrada antes de chamar a camada de serviço.
 func (uc *userControllerInterface) CreateUser(c *gin.Context) {
 	logger.Info("Init CreateUser controler",
 		zap.String("journey", "CreateUser"))

@@ -12,6 +12,7 @@ import (
 	"go.uber.org/zap"
 )
 
+// CreateUser insere um documento na coleção MongoDB e converte o resultado para o domínio.
 func (ur *userRepository) CreateUser(userDomain model.UserDomainInterface) (model.UserDomainInterface, *rest_err.RestErr) {
 	logger.Info("Init CreateUser repository", zap.String("journey", "createUser"))
 	collection_name := os.Getenv(MONGODB_USER_DB)

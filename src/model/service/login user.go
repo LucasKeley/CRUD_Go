@@ -7,6 +7,7 @@ import (
 	"go.uber.org/zap"
 )
 
+// LoginUserServices autentica o usuário e retorna um token JWT pronto para uso em rotas protegidas.
 func (ud *userDomainService) LoginUserServices(
 	userDomain model.UserDomainInterface,
 ) (model.UserDomainInterface, string, *rest_err.RestErr) {

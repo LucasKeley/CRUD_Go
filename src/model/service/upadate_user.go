@@ -7,6 +7,7 @@ import (
 	"go.uber.org/zap"
 )
 
+// UpdateUser delega a atualização ao repositório mantendo o fluxo de logs e erros padronizados.
 func (ud *userDomainService) UpdateUser(userId string, userDomain model.UserDomainInterface) *rest_err.RestErr {
 	logger.Info("Init UpdateUser model", zap.String("journey", "UpdateUser"))
 

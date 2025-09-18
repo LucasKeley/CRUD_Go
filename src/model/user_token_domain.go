@@ -17,6 +17,7 @@ var (
 	JWT_SECRET_KEY = "JWT_SECRET_KEY"
 )
 
+// GenerateToken produz um JWT com dados básicos do usuário autenticado.
 func (ud *userDomain) GenerateToken() (string, *rest_err.RestErr) {
 	secret := os.Getenv("JWT_SECRET_KEY")
 
@@ -38,6 +39,7 @@ func (ud *userDomain) GenerateToken() (string, *rest_err.RestErr) {
 	return tokenSring, nil
 }
 
+// VerifyToken valida o JWT recebido e reconstrói os dados essenciais do usuário.
 func VerifyToken(tokenValue string) (UserDomainInterface, *rest_err.RestErr) {
 	secret := os.Getenv(JWT_SECRET_KEY)
 
@@ -65,6 +67,7 @@ func VerifyToken(tokenValue string) (UserDomainInterface, *rest_err.RestErr) {
 	}, nil
 }
 
+// VerifyTokenMiddleware protege rotas, interrompendo a requisição em caso de token inválido.
 func VerifyTokenMiddleware(c *gin.Context) {
 	secret := os.Getenv(JWT_SECRET_KEY)
 	tokenValue := RemoveBearerPrefix(c.Request.Header.Get("Authorization"))
@@ -103,6 +106,7 @@ func VerifyTokenMiddleware(c *gin.Context) {
 
 }
 
+// RemoveBearerPrefix remove o prefixo padrão do cabeçalho HTTP Authorization.
 func RemoveBearerPrefix(token string) string {
 	if strings.HasPrefix("Bearer ", token) {
 		token = strings.TrimPrefix("Bearer ", token)

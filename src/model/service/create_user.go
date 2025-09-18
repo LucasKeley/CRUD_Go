@@ -7,6 +7,7 @@ import (
 	"go.uber.org/zap"
 )
 
+// CreateUserServeces garante unicidade de e-mail, aplica hash de senha e persiste o usuário.
 func (ud *userDomainService) CreateUserServeces(
 	userDomain model.UserDomainInterface,
 ) (model.UserDomainInterface, *rest_err.RestErr) {
