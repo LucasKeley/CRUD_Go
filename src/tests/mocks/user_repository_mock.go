@@ -90,6 +90,7 @@ func (mr *MockUserRepositoryMockRecorder) FindUserByID(id interface{}) *gomock.C
 	mr.mock.ctrl.T.Helper()
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "FindUserByID", reflect.TypeOf((*MockUserRepository)(nil).FindUserByID), id)
 }
+
 func (m *MockUserRepository) UpdateUser(userId string, userDomain model.UserDomainInterface) *rest_err.RestErr {
 	m.ctrl.T.Helper()
 	ret := m.ctrl.Call(m, "UpdateUser", userId, userDomain)
