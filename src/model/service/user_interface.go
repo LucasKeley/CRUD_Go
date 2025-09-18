@@ -20,7 +20,7 @@ func (ud *userDomainService) findUserByEmailAndPasswordServices(email string, pa
 	panic("unimplemented")
 }
 
-func (ud *userDomainService) CreateUserServices(model.UserDomainInterface) (model.UserDomainInterface, *rest_err.RestErr) {
+func (ud *userDomainService) CreateUserServices(modeç model.UserDomainInterface) (model.UserDomainInterface, *rest_err.RestErr) {
 	panic("unimplemented")
 }
 
