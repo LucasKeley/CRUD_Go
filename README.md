@@ -51,6 +51,7 @@ CRUD_Go é uma API escrita em Go para gerenciar usuários, implementando as oper
    go run ./...
    ```
 3. A API ficará disponível em `http://localhost:8080`.
+4. A documentação Swagger pode ser acessada em `http://localhost:8080/docs` (JSON e YAML disponíveis).
 
 ### Principais endpoints
 | Método | Caminho                     | Descrição                                    | Autenticação |
