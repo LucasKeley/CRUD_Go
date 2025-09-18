@@ -6,9 +6,9 @@ import (
 
 	"github.com/LucasKeley/CRUD_Go/src/model"
 	"github.com/stretchr/testify/assert"
+	"go.mongodb.org/mongo-driver/bson"
 	"go.mongodb.org/mongo-driver/bson/primitive"
 	"go.mongodb.org/mongo-driver/mongo/integration/mtest"
-	"go.mongodb.org/mongo-driver/v2/bson"
 )
 
 func TestUserRepository_CreateUser(t *testing.T) {
@@ -23,7 +23,6 @@ func TestUserRepository_CreateUser(t *testing.T) {
 	defer os.Clearenv()
 
 	mtestDb := mtest.New(t, mtest.NewOptions().ClientType(mtest.Mock))
-	defer mtestDb.Close()
 
 	mtestDb.Run("when_sending_a_valid_domain_returns_success", func(mt *mtest.T) {
 		mt.AddMockResponses(bson.D{

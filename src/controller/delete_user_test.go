@@ -7,7 +7,6 @@ import (
 	"testing"
 
 	"github.com/LucasKeley/CRUD_Go/src/configuration/rest_err"
-	"github.com/LucasKeley/CRUD_Go/src/model"
 	"github.com/LucasKeley/CRUD_Go/src/tests/mocks"
 	"github.com/gin-gonic/gin"
 	"github.com/stretchr/testify/assert"
@@ -20,7 +19,7 @@ func TesteUserControllerInterface_DeleteUser(t *testing.T) {
 	ctrl := gomock.NewController(t)
 	defer ctrl.Finish()
 
-	service := mocks.NewMockUserDomainInterface(ctrl)
+	service := mocks.NewMockUserDomainService(ctrl)
 	controller := NewUserControllerInterface(service)
 
 	t.Run("userId_is_invalid_returns_error", func(t *testing.T) {
@@ -73,12 +72,7 @@ func TesteUserControllerInterface_DeleteUser(t *testing.T) {
 			},
 		}
 
-		service.EXPECT().DeleteUser(id).Return(
-			model.NewUserDomain(
-				"test@test.com",
-				"test",
-				"test",
-				20), nil)
+		service.EXPECT().DeleteUser(id).Return(nil)
 
 		MakeRequest(context, param, url.Values{}, "DELETE", nil)
 		controller.DeleteUser(context)

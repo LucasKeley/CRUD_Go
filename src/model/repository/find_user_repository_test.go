@@ -24,7 +24,6 @@ func TestUserRepository_FindUserByEmail(t *testing.T) {
 	defer os.Clearenv()
 
 	mtestDb := mtest.New(t, mtest.NewOptions().ClientType(mtest.Mock))
-	defer mtestDb.Close()
 
 	mtestDb.Run("when_sending_a_valid_email_returns_success", func(mt *mtest.T) {
 		userEntity := entity.UserEntity{

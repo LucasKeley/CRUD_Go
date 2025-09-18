@@ -46,7 +46,7 @@ func TestUpdateUser(t *testing.T) {
 
 	userRequest := request.UserUpdateRequest{
 		Name: "HUNCODING_NEW_NAME",
-		Age:  int8(rand.Uint64()),
+		Age:  int(rand.Uint64()),
 	}
 
 	b, _ := json.Marshal(userRequest)

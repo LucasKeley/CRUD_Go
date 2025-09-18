@@ -9,6 +9,7 @@ import (
 
 	"github.com/LucasKeley/CRUD_Go/src/configuration/rest_err"
 	"github.com/LucasKeley/CRUD_Go/src/model"
+	"github.com/LucasKeley/CRUD_Go/src/tests/mocks"
 	"github.com/gin-gonic/gin"
 	"github.com/stretchr/testify/assert"
 	"go.mongodb.org/mongo-driver/bson/primitive"

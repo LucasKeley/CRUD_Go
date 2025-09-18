@@ -3,7 +3,7 @@ package repository
 import (
 	"github.com/LucasKeley/CRUD_Go/src/configuration/rest_err"
 	"github.com/LucasKeley/CRUD_Go/src/model"
-	"go.mongodb.org/mongo-driver/v2/mongo"
+	"go.mongodb.org/mongo-driver/mongo"
 )
 
 const (

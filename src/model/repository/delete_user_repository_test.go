@@ -21,7 +21,6 @@ func TestUserRepository_DeleteUser(t *testing.T) {
 	defer os.Clearenv()
 
 	mtestDb := mtest.New(t, mtest.NewOptions().ClientType(mtest.Mock))
-	defer mtestDb.Close()
 
 	mtestDb.Run("when_sending_a_valid_userId_return_success", func(mt *mtest.T) {
 		mt.AddMockResponses(bson.D{
